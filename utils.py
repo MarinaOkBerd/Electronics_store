@@ -40,9 +40,13 @@ class Item:
 
     @staticmethod
     def is_integer(number):
-        return((type(number) == int) or (type(number) == float)) and (roumd(number) == number)
+        return((type(number) == int) or (type(number) == float)) and (round(number) == number)
 
+    def __repr__(self):
+        return f"Item({self.__name}, {self.price}, {self.count}"
 
+    def __str__(self):
+        return f"{self.__name}"
 
 
 
