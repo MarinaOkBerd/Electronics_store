@@ -56,22 +56,23 @@ class Phone(Item):
 
     @staticmethod
     def test_number_of_sim(self):
-        if self.number_of_sim < 0 and type(self.number_of_sim) == int:
+        if self.number_of_sim < 0 or type(self.number_of_sim) == int:
             raise ValueError("Количество физических SIM-карт должно быть целым числом больше нуля")
         else:
             return self.number_of_sim
 
     def __add__(self, other):
         if isinstance(other, Item):
-            return self.number_of_sim + other.count
+            return self.count + other.count
         else:
             ValueError("Возможно сложение только объектов Item и Phone")
 
 
-phone1 = Phone("iPhone 14", 120_000, 5, 2)
-print(phone1)
+phone1 = Phone("iPhone 14", 120_000, 5, 1.5)
+#print(phone1)
 #iPhone 14
-print(repr(phone1))
+#print(repr(phone1))
 #Phone('iPhone 14', 120000, 5, 2)
-phone1.number_of_sim = 0
+#phone1.number_of_sim = 0
+
 #ValueError: Количество физических SIM-карт должно быть целым числом больше нуля.
