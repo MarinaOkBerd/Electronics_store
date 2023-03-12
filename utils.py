@@ -68,7 +68,27 @@ class Phone(Item):
             ValueError("Возможно сложение только объектов Item и Phone")
 
 
-phone1 = Phone("iPhone 14", 120_000, 5, 1.5)
+class MixinKeyboard:
+    def __init__(self, name, price, count):
+        super().__init__(name, price, count)
+        self._language = "EN"
+
+    @property
+    def language(self):
+        return self._language
+
+    def change_lang(self):
+        if self._language == "EN":
+            self._language = "RU"
+        return self._language
+
+
+class Keyboard(MixinKeyboard, Item):
+    pass
+
+
+
+#phone1 = Phone("iPhone 14", 120_000, 5, 1.5)
 #print(phone1)
 #iPhone 14
 #print(repr(phone1))
