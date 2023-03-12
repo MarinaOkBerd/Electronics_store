@@ -1,9 +1,10 @@
 import pytest
 
-from utils import Item, Phone
+from utils import Item, Phone, MixinKeyboard, Keyboard
 
 item1 = Item("Смартфон", 10000, 20)
 phone1 = Phone("iPhone 14", 120_000, 5, 2)
+kb = Keyboard('Dark Project KD87A', 9600, 5)
 
 
 def test_calculate_total_price():
@@ -22,4 +23,11 @@ def test_test_number_of_sim():
 
 def test_add():
     assert phone1 + item1 == 25
+
+
+def test_change_lang():
+    assert kb.language == "EN"
+    assert kb.change_lang() == "RU"
+
+
 
